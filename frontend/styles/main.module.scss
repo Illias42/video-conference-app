@@ -1,0 +1,55 @@
+#sidebar {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 20px 0;
+}
+
+#pages {
+    & > a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        transition: all 0.2s linear;
+
+        &:hover {
+            cursor: pointer;
+            background-color: lighten(#1B1E24, 10%);
+        }
+
+        &:active {
+            background-color: lighten(#1B1E24, 15%);
+        }
+    }
+
+    & > .active {
+        background-color: lighten(#1B1E24, 5%);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            border-right: 3px #6A2176 solid;
+        }
+    }
+}
+
+.signout {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    transition: all 0.2s linear;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lighten(#1B1E24, 10%);
+    }
+
+    &:active {
+        background-color: lighten(#1B1E24, 15%);
+    }
+}

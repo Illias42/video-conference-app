@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  tag         String
+  email       String     @unique
+  avatar      String?
+  hash        String
+  hashedRt    String?
+  
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Direct {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  participantsId  String[]
+  messages        Message[]
+
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Message {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  message     String
+  type        String
+  userId      String     @map("user_id")
+  roomId      String?    @map("room_id")
+  image       String?
+  directId    String?    @map("direct_id")
+  
+  room        Room?      @relation(fields: [roomId], references: [id])
+  direct      Direct?    @relation(fields: [directId], references: [id])
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Room {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  socketId    String
+  messages    Message[]
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}

@@ -1,0 +1,28 @@
+.form {
+  flex-direction: column;
+  align-items: center;
+  padding: 0 50px;
+  width: 500px;
+  border-radius: 10px;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}
