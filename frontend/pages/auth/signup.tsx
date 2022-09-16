@@ -59,9 +59,9 @@ const SignUp: NextPage = () => {
       <Flex className={styles.form} bg='gray.800'>
         <Heading color='gray.300' m={7}>Sign Up</Heading>
 
-        {/* <label htmlFor="avatar">
+        {/*<label htmlFor="avatar">
           <Image id={styles.avatar} src={avatar} key={avatar} width={200} height={200} alt="Avatar" />
-        </label> */}
+        </label>*/}
         <input
           ref={avatarRef}
           type="file"
