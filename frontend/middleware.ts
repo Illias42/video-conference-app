@@ -57,7 +57,8 @@ export async function middleware(req: NextRequest) {
       }
     }
 
-    return NextResponse.redirect('https://video-conference-app1.herokuapp.com/auth/signin');
+    return NextResponse.redirect('http://localhost:3000/auth/signin');
+    // return NextResponse.redirect('https://video-conference-app1.herokuapp.com/auth/signin');
   }
 
   return NextResponse.next(response);
